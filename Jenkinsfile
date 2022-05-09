@@ -10,8 +10,10 @@ pipeline {
         TF_HOME = tool('Terrafrom-2')
         TP_LOG = "WARN"
         PATH = "$TF_HOME:$PATH"
-        ACCESS_KEY = credentials('AWSAccessKeyId')
-        SECRET_KEY = credentials('AWSSecretKey')
+        ACCESS_KEY = credentials('AWSAccessKeyIdd')
+        SECRET_KEY = credentials('AWSSecretKeyy')
+        sh "echo ACCESS_KEY"
+        sh "echo SECRET_KEY"
     }
     stages {
             stage('TerraformInit'){
