@@ -1,13 +1,13 @@
-# Creating 1st EC2 instance in Public Subnet
+
 resource "aws_instance" "demoinstance" {
  
-  ami                         = "ami-0fb7ffc4a6f7ad467"
+  #ami                         = "ami-0fb7ffc4a6f7ad467"
+  ami                         = "ami-06a72910b27938a31"
   instance_type               = "t2.micro"
   count                       = 1
   key_name                    = "tests"
   vpc_security_group_ids      = ["${aws_security_group.demosg.id}"]
   subnet_id                   = "${aws_subnet.public-subnet-1.id}"
-  ####subnet_id                   = "${aws_subnet.demoinstance.id}"
   associate_public_ip_address = true
   user_data                   = "${file("data.sh")}"
 
@@ -16,21 +16,21 @@ resource "aws_instance" "demoinstance" {
   }
 }
 
-# Creating 2nd EC2 instance in Public Subnet
 resource "aws_instance" "demoinstance1" {
-  ami                         = "ami-0fb7ffc4a6f7ad467"
+  #ami                         = "ami-0fb7ffc4a6f7ad467"
+  ami                         = "ami-06a72910b27938a31"
   instance_type               = "t2.micro"
   count                       = 1
   key_name                    = "tests"
   vpc_security_group_ids      = ["${aws_security_group.demosg.id}"]
   subnet_id                   = "${aws_subnet.public-subnet-2.id}"
   associate_public_ip_address = true
-  user_data                   = "${file("data.sh")}"
 
   tags = {
     Name = "My Public Instance 2"
   }
 }
+
 #Key
 resource "aws_key_pair" "awskey" {
 key_name = "tests"
