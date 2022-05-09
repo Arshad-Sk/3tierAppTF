@@ -57,7 +57,7 @@ count =1
 
 resource "aws_lb_listener" "external-elb" {
   load_balancer_arn = aws_lb.external-alb.arn
-  port              = "80"
+  port              = "8080"
   protocol          = "HTTP"
 
   default_action {
