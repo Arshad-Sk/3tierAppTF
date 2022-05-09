@@ -44,7 +44,7 @@ pipeline {
                             sh "terraform workspace select ${params.WORKSPACE}"
                         }
                          sh "echo \$PWD"
-                        sh "terraform plan  \
+                        sh "terraform plan  -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' \
                         ;echo \$? > status"
                         stash name: "terraform-plan"
                          sh "echo \$PWD"
