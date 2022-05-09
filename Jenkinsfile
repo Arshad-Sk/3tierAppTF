@@ -12,8 +12,7 @@ pipeline {
         PATH = "$TF_HOME:$PATH"
         ACCESS_KEY = credentials('AWSAccessKeyIdd')
         SECRET_KEY = credentials('AWSSecretKeyy')
-        sh "echo ACCESS_KEY"
-        sh "echo SECRET_KEY"
+        
     }
     stages {
             stage('TerraformInit'){
@@ -46,6 +45,8 @@ pipeline {
                             sh "terraform workspace select ${params.WORKSPACE}"
                         }
                          sh "echo \$PWD"
+                        sh "echo $ACCESS_KEY"
+                        sh "echo $SECRET_KEY"
                         sh "terraform plan  -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' \
                         ;echo \$? > status"
                         stash name: "terraform-plan"
