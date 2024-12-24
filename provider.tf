@@ -10,8 +10,9 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
+  shared_credentials_file = "/home/ec2-user/.aws/credentials"
   region = "eu-north-1"
-     
+  
  
 }
 
