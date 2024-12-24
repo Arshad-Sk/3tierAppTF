@@ -10,6 +10,8 @@ pipeline {
         TF_HOME = tool('Terrafrom-2')
         TP_LOG = "WARN"
         PATH = "$TF_HOME:$PATH"
+        ACCESS_KEY = credentials('aws-access-key-id')
+        SECRET_KEY = credentials('aws-secret-access-key')
 
         
     }
